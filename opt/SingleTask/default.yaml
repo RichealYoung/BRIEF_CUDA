@@ -1,0 +1,50 @@
+devide: 
+  type: None
+  allocate: by_size
+param: 
+  file_ratio: 80
+  given_size: 0     
+log: 
+  project_name: single
+  stdlog: true
+  tensorboard: true
+reproduc: 
+  seed: 42
+  benchmark: false
+  deterministic: true
+compress: 
+  loss: 
+    otype: L2
+  optimizer: 
+    otype: Adam
+    learning_rate: 1e-3
+    beta1: 0.9
+    beta2: 0.99
+    epsilon: 1e-8
+    l2_reg: 1e-8
+  encoding: 
+    otype: Identity
+    scale: 1.0
+    offset: 0.0
+  network:
+    otype: CutlassMLP
+    activation: Sine
+    output_activation: None
+    n_neurons: 16
+    n_hidden_layers: 5
+  data:
+    path: data/test.tif
+    normalized_min: 0
+    normalized_max: 100
+  weight_intensity_min: 2001
+  weight_intensity_max: 65535
+  weight_val: 1
+  coord_normalized_min: -1.0
+  coord_normalized_max: 1.0
+  n_print_loss_interval: 100
+  n_training_samples_upper_limit: 1000000
+  n_random_training_samples_of_data_size: 0.0
+  n_inference_batch_size: 100000
+  n_training_steps: 80000
+  compressed_path: test.msgpack
+  decompressed_path: test.tif
